@@ -2,12 +2,13 @@ from warp import Warp
 import os
 import time
 
-PATH_TO_OUTPUT_FILE="dummy_server.log"
+PATH_TO_OUTPUT_FILE = "dummy_server.log"
 
 
 def test_start_process_sdk():
     wp = Warp(command="dummy_server.py")
     wp.start()
+    time.sleep(1)
 
     if not os.path.exists(PATH_TO_OUTPUT_FILE):
         raise Exception("Dummy server isn't producing any output")
@@ -22,3 +23,5 @@ def test_start_process_sdk():
         final_lines = f.readlines()
 
     assert len(initial_lines) + 5 == len(final_lines)
+
+    wp.stop()
