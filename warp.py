@@ -5,10 +5,10 @@ import time
 import signal
 
 
-def background_process(stop_server):
+def background_process(stop_server, command):
     while True:
         # Start process
-        proc = subprocess.Popen(['python3', 'dummy_server.py'])
+        proc = subprocess.Popen(['python3', command])
         print()
         print(f"Started new server subprocess {proc.pid}")
 
@@ -52,7 +52,7 @@ class Warp:
         signal.signal(signal.SIGTERM, stop_server_gracefully_on_signal)
         signal.signal(signal.SIGINT, stop_server_gracefully_on_signal)
 
-        t = threading.Thread(target=background_process, args=(lambda: stop_server,))
+        t = threading.Thread(target=background_process, args=(lambda: stop_server,self.command,))
 
         self.kill_function = stop_server_gracefully_atexit
 
