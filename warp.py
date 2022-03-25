@@ -6,6 +6,11 @@ import signal
 
 
 def background_process(stop_server, command):
+    """
+    Manager of background process
+    :param stop_server: This boolean flag is used to signal the stopping of the background process
+    :param command: Command that should be executed to start background process
+    """
     while True:
         # Start process
         proc = subprocess.Popen(['python3', command])
@@ -31,14 +36,22 @@ def background_process(stop_server, command):
                 print('Cleaning up parent thread')
                 break
 
+
 class Warp:
     stop_server = False
 
     def __init__(self, command: str):
+        """
+        Initializes a Warp object
+        :param command: Command to execute to start subprocess
+        """
         self.command = command
         self.t = None
 
     def start(self):
+        """
+        Starts the background process
+        """
         stop_server = False
 
         def stop_server_gracefully_atexit():

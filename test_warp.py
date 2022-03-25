@@ -7,7 +7,6 @@ PATH_TO_OUTPUT_FILE_SHORT_LIVED = "short_lived_dummy_server.log"
 
 
 def test_start_process_sdk():
-
     try:
         os.remove(PATH_TO_OUTPUT_FILE)
     except:
@@ -19,7 +18,6 @@ def test_start_process_sdk():
 
     if not os.path.exists(PATH_TO_OUTPUT_FILE):
         raise Exception("Dummy server isn't producing any output")
-
 
     with open(PATH_TO_OUTPUT_FILE) as f:
         initial_lines = f.readlines()
@@ -41,7 +39,6 @@ def test_start_process_sdk():
 
 
 def test_self_healing_of_process():
-
     try:
         os.remove(PATH_TO_OUTPUT_FILE_SHORT_LIVED)
     except:
@@ -69,4 +66,3 @@ def test_self_healing_of_process():
         os.remove(PATH_TO_OUTPUT_FILE_SHORT_LIVED)
     except:
         pass
-
