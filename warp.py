@@ -19,7 +19,6 @@ def background_process(stop_server, command):
 
         # Check to see if process is still running
         while proc.poll() is None and not stop_server():
-
             # TODO: Maybe use a gRPC health check here to see if the process is up?
             # Don't use readline since it will block!
             print(f"doing health check for process {proc.pid}")
@@ -65,7 +64,7 @@ class Warp:
         signal.signal(signal.SIGTERM, stop_server_gracefully_on_signal)
         signal.signal(signal.SIGINT, stop_server_gracefully_on_signal)
 
-        t = threading.Thread(target=background_process, args=(lambda: stop_server,self.command,))
+        t = threading.Thread(target=background_process, args=(lambda: stop_server, self.command,))
 
         self.kill_function = stop_server_gracefully_atexit
 
