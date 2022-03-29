@@ -1,6 +1,6 @@
 # WARP: Wrapper around Replicated Processes
 
-WARP is a light-weight weight manager for background processes.
+WARP is a light-weight manager for background processes.
 
 Functionality
 * Easily spawn any process as a managed subprocess
