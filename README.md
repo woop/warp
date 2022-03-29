@@ -1,4 +1,7 @@
 # WARP: Wrapper around Replicated Processes
+<p align="center">
+  <img style="width:300px" src="https://i.imgur.com/0oS4Jih.png" />
+</p>
 
 WARP is a light-weight manager for background processes.
 
