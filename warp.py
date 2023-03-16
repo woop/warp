@@ -13,7 +13,7 @@ def background_process(stop_server, command):
     """
     while True:
         # Start process
-        proc = subprocess.Popen(['python3', command])
+        proc = subprocess.Popen(['python', command])
         print()
         print(f"Started new server subprocess {proc.pid}")
 
